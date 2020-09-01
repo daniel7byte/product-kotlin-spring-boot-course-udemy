@@ -16,3 +16,11 @@ class ProductController {
     @GetMapping
     fun findAll() = productService.findAll()
 }
+
+interface BasicCrud<T,ID> {
+    fun findAll(): List<T>
+    fun findById(id: ID): T?
+    fun save(t: T): Boolean
+    fun update(t: T): Boolean
+    fun deleteById(id: ID): Boolean
+}
