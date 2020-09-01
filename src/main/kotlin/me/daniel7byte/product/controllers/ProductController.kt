@@ -1,19 +1,14 @@
 package me.daniel7byte.product.controllers
 
+import me.daniel7byte.product.services.ProductService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api")
-class HelloController {
+@RequestMapping("/api/v1/products")
+class ProductController (private val productService: ProductService) {
 
     @GetMapping
-    fun hello() = "Hello World"
-
-    @GetMapping("/test")
-    fun test(): String {
-        return "This is a test!"
-    }
-
+    fun findAll() = productService.findAll()
 }
